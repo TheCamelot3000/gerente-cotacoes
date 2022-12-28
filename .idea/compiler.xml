@@ -6,15 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cotacoes-data" />
-        <module name="cotacoes-api" />
         <module name="cotacoes-core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
   </component>
   <component name="JavacSettings">
+    <option name="GENERATE_NO_WARNINGS" value="true" />
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="cotacoes-api" options="-parameters" />
       <module name="cotacoes-core" options="-parameters" />
     </option>
   </component>

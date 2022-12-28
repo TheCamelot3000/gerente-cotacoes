@@ -8,10 +8,18 @@
     <description>Um gerente para as cotações de inflação disponiveis na anbima
     </description>
     <packaging>pom</packaging>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.7</version>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -19,11 +27,14 @@
             <artifactId>junit-jupiter</artifactId>
             <version>5.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.19.0</version>
+        </dependency>
     </dependencies>
 
     <modules>
-        <module>cotacoes-data</module>
-        <module>cotacoes-api</module>
         <module>cotacoes-core</module>
     </modules>
 
