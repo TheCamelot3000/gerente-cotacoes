@@ -22,11 +22,14 @@ public class CotacaoRepositoryService {
     private final Logger logger = LoggerFactory.getLogger(CotacaoRepositoryService.class);
 
     public Optional<Cotacao> save(Cotacao cotacao) throws SaveDataBaseException, JsonProcessingException {
+        if (cotacao.getId() != null)
+            throw new SaveDataBaseException("Don't fill the field Id for save itens!");
+
         try {
             logger.info("Saving: " + cotacao.toJson());
             return Optional.of(this.repository.save(cotacao));
         } catch (Exception e) {
-            throw new SaveDataBaseException("The resource" + cotacao.toJson() + "can't be saved");
+            throw new SaveDataBaseException("The resource" + cotacao.toJson() + "can't be saved \n" + e.getMessage());
         }
     }
 
@@ -67,7 +70,7 @@ public class CotacaoRepositoryService {
             logger.info("Finding item with Id: " + id);
             return this.repository.findById(id);
         } catch (Exception e) {
-            throw new ResourceNotFoundException("Not found item with ID:" + id);
+            throw new ResourceNotFoundException("Not found item with ID:" + id + "\n" + e.getMessage());
         }
     }
 
@@ -78,7 +81,7 @@ public class CotacaoRepositoryService {
             logger.info("finded " + cotacoes.size() + "items");
             return cotacoes;
         } catch (Exception e) {
-            throw new ResourceNotFoundException("Erro when I tryed to find all");
+            throw new ResourceNotFoundException("Error when I tryed to find all \n" + e.getMessage());
         }
     }
 }
